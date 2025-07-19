@@ -19,11 +19,12 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: azappCfg
-              valueFrom:
-                secretKeyRef:
-                  name: azappcfg
-                  key: AzAppCfg
+  - name: AzAppCfg
+    valueFrom:
+      secretKeyRef:
+        name: azappcfg
+        key: AzAppCfg
+
       imagePullSecrets:
-        - name: acr-chayma
+        - name: infrawatchchayma
 
