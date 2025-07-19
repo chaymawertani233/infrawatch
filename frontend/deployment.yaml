@@ -1,34 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
-  labels:
-    app: frontend
+  name: pfe-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: pfe-frontend
   template:
     metadata:
       labels:
-        app: frontend
+        app: pfe-frontend
     spec:
       containers:
-      - name: frontend
-        image: ton-registry/ton-frontend:latest
-        ports:
-        - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend-service
-spec:
-  selector:
-    app: frontend
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-  type: ClusterIP
+        - name: pfe-frontend
+          image: acr-chayma.azurecr.io/frontend-sbus:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: acr-chayma-secret
