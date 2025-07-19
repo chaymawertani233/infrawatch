@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pfe-frontend
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - app.chaymawertani233.com    # Remplace par ton vrai domaine si besoin
+    secretName: app-chaymawertani233-com-tls
+  rules:
+  - host: app.chaymawertani233.com   # Même domaine que ci-dessus
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pfe-frontend      # Doit correspondre au nom de ton service Kubernetes
+            port:
+              number: 80
