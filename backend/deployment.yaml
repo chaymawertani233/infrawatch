@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: pfe-backend
-          image: acr-chayma.io/backend-pfe:latest
+          image: infrawatchchayma.azurecr.io/backend-pfe:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
           env:
-            - name: AzAppCfg
+            - name: azappCfg
               valueFrom:
                 secretKeyRef:
                   name: azappcfg
