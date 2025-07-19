@@ -25,5 +25,5 @@ spec:
                   name: azappcfg
                   key: AzAppCfg
       imagePullSecrets:
-        - name: acr-auth
+        - name: acr-chayma
 
