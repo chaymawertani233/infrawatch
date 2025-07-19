@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: pfe-backend
-          image: infrawatchchayma.azurecr.io/backend-pfe:latest
+          image: infrawatchchayma.io/backend-pfe:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
