@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pfe-backend-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - app.chaymawertani233.com    # Remplace par ton vrai domaine
+    secretName: app-chaymawertani233-com-tls
+  rules:
+  - host: app.chaymawertani233.com
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: pfe-backend-service
+            port:
+              number: 3000
